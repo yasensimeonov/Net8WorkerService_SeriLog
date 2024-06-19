@@ -27,7 +27,7 @@ IHostBuilder CreateHostBuilder(string[] args) =>
             {
                 options.ServiceName = "SampleService";
             });
-            services.AddHostedService<Worker>();
+            services.AddHostedService<TimerService>();
         });
 
 //builder.Services.AddWindowsService(options =>
