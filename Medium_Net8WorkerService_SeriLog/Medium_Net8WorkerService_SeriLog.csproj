@@ -18,4 +18,8 @@
     <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UserSessionTracker\" />
+  </ItemGroup>
 </Project>

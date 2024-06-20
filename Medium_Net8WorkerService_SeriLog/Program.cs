@@ -15,19 +15,23 @@ Log.Logger = new LoggerConfiguration()
 
 IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
-        .UseWindowsService()
+        .UseWindowsService(options =>
+        {
+            options.ServiceName = "SampleService";
+        })
         .UseSerilog((context, services, configuration) => configuration
             //.WriteTo.Console()
             .ReadFrom.Configuration(context.Configuration)
             .ReadFrom.Services(services)
             )
-        .ConfigureServices((services) =>
+        .ConfigureServices((hostContext, services) =>
         {
             services.AddWindowsService(options =>
             {
                 options.ServiceName = "SampleService";
             });
-            services.AddHostedService<TimerService>();
+            //services.AddHostedService<SessionTimeMonitor>();
+            services.AddSingleton<IHostLifetime, SessionTimeMonitor>();
         });
 
 //builder.Services.AddWindowsService(options =>
