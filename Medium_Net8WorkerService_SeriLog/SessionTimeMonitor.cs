@@ -84,7 +84,7 @@ namespace Medium_Net8WorkerService_SeriLog
                     || changeDescription.Reason == SessionChangeReason.SessionUnlock
                     )
                 {
-                    _logger.LogInformation("OnSessionChange Event handled.");
+                    _logger.LogInformation("OnSessionChange Event handled. SessionChange Description is: " + changeDescription.Reason.ToString());
 
                     //SessionManager.LogSessionData(
                     //    currentServiceRunGuid,
